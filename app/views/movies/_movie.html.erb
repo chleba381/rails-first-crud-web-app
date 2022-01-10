@@ -1,0 +1,27 @@
+<div id="<%= dom_id movie %>" class="p-3 mb-2 bg-light text-dark rounded">
+  <p>
+    <strong>Název filmu:</strong>
+    <%= movie.name %>
+  </p>
+
+  <p>
+    <strong>Datum vydání:</strong>
+    <%= movie.release_date %>
+  </p>
+
+  <p>
+    <strong>Režisér:</strong>
+    <%= link_to Director.find_by_id(movie.director_id).first_name.to_s, director_path(movie.director_id) %>
+
+  </p>
+
+  <p>
+    <strong>Popis:</strong>
+    <%= movie.description %>
+  </p>
+  <p>
+      <%= link_to "Ukázat tento film", movie, class:"btn btn-outline-dark" %>
+  </p>
+
+
+</div>

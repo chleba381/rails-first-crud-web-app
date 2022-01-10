@@ -1,0 +1,40 @@
+<%= form_with(model: movie) do |form| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name, "Název filmu", style: "display: block" %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div id="date_dropdown">
+    <%= form.label :release_date, "Datum vydání", style: "display: block" %>
+    <%= form.date_select :release_date, { :include_blank => true, :start_year => 1900 }, { :class => "col-md-3" }%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description, "Popis", style: "display: block" %>
+    <%= form.text_area :description, class:"form-control" %>
+  </div>
+
+  <div>  
+    <%= form.label :director_id, "Režisér", style: "display: block" %>
+    <%= form.collection_select(:director_id, Director.all, :id, :first_name, {:prompt => 'Vyberte režiséra'}) %>
+  </div>
+<br/>
+  <div>
+    <%= form.submit "Přidat film", class:"btn btn-outline-success" %>
+  </div>
+    <p class="fs-4">
+      Není režisér k vámi přidávanému filmu na výběr? <%= link_to "Přidejte ho!", new_director_path %>
+    </p>
+<% end %>

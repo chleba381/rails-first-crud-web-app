@@ -1,0 +1,9 @@
+
+<%= render @movie %>
+
+<div>
+  <%= link_to "Upravit tento film", edit_movie_path(@movie), class:"btn btn-outline-dark" %> 
+  <%= link_to "Zpět na Filmy", movies_path, class:"btn btn-outline-dark" %>
+  
+  <%= button_to "Odstranit tento film", @movie, method: :delete, class:"btn btn-danger" %>
+</div>

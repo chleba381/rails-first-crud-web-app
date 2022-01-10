@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Domovská stránka", home_index_path, 
+          class:"btn btn-outline-light" %>
+        </li>
+        <li>
+          <%= link_to "Filmy", movies_path, class:"btn btn-outline-light" %>
+        </li>
+        <li>
+          <%= link_to "Režiséři", directors_path, class:"btn btn-outline-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Stránka 1", home_stranka1_path, class:"btn btn-outline-light"  %>
+        </li>
+      </ul>
+
+    </div>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Odhlásit se", destroy_user_session_path, :method => :delete, class:"btn btn-outline-light"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Upravit profil", edit_user_registration_path, class:"btn btn-outline-light"  %>
+        </li>
+
+        <% else %>
+
+        <li class="nav-item">
+          <%= link_to "Zaregistrovat se", new_user_registration_path, class:"btn btn-outline-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Přihlásit se", new_user_session_path, class:"btn btn-outline-light" %>
+        </li>
+
+        <% end %>
+        
+  </div>
+</nav>

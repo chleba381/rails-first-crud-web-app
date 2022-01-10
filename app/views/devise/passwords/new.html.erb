@@ -1,0 +1,17 @@
+<h2>Zapomněli jste heslo?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field form-group">
+    <%= f.label "Email, na který máme poslat odkaz na obnovu hesla" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+  </div>
+<br/>
+  <div class="actions">
+    <%= f.submit "Pošlete mi instrukce na obnovení hesla", class:"btn btn-outline-dark"%>
+  </div>
+<% end %>
+<br/>
+<%= link_to "Zpět", :back %>
+<%= render "devise/shared/links" %>

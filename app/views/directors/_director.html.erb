@@ -1,0 +1,20 @@
+<div id="<%= dom_id director %>" class="p-3 mb-2 bg-light text-dark rounded">
+  <p>
+    <strong>Jméno:</strong>
+    <%= director.first_name %>
+  </p>
+
+
+  <p>
+    <strong>Datum narození:</strong>
+    <%= director.date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Filmy:</strong>
+  <% director.movies.each do |movie| %>
+  <%= link_to movie.name, movie_path(movie) %>
+  <% end -%>    
+  </p>
+
+</div>

@@ -1,0 +1,18 @@
+<h1>Režiséři</h1>
+<% if user_signed_in? %>
+  <%= link_to "Přidat nového režiséra", new_director_path, class:"btn btn-outline-dark" %>
+  <br/>
+<% else %>
+  <p>Přidávat nové režiséry mohou pouze registrovaní uživatelé, pokud chcete přidat režiséra do databáze, musíte se <%= link_to "přihlásit", new_user_session_path %></p>
+  <p>Nemáte ješte založený účet? <%= link_to "Vytvořte si ho", new_user_registration_path %>!</p>
+<% end %>
+<br/>
+<div id="directors">
+  <% @directors.each do |director| %>
+    <%= render director %>
+    <p>
+      <%= link_to "Ukázat tohoto režiséra", director, class:"btn btn-outline-dark" %>
+    </p>
+  <% end %>
+</div>
+
