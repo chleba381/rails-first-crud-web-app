@@ -1,7 +1,8 @@
 # README
 
-Pro použití pokročilejších funkcí se přihlašte pomocí:
-email: uzivatel1@email.cz
-heslo: heslo123
+pro správnou funkci této webové aplikace jsou nutné tyto příkazy:
+-> bundle install
+-> rake db:migrate
+-> rake db:seed
+-> rails s
 
-nebo si vytvořte vlastní účet
