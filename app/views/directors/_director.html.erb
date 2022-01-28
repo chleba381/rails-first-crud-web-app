@@ -10,6 +10,58 @@
     <%= director.date_of_birth %>
   </p>
 
+  <div class="flexbox-container" style="margin-top: 20px;">
+
+    <div>
+      <strong>Průměrné hodnocení všech filmů:</strong>
+    </div>
+
+    <div style="margin-left: 10px;">
+      <% counter = 0 %>
+      <% avg_val = 0 %>
+      <% director.movies.each do |movie| %>
+        <% if movie.ratings.count > 0 %>
+          <% director.movies.each do |movie| %>
+            <% counter += 1 %>
+            <% rat_val = movie.ratings.average(:value).round(2) %>
+            <% avg_val += rat_val %>
+          <% end %>
+          <%= result = avg_val / counter %>/5.0
+          <% break if result > 0 %>
+        <% else %>
+          Žádný z filmů tohoto režiséra není ohodnocen
+        <% end %>
+      <% end -%>           
+    </div>
+
+    <div style="margin-left: 40px;">
+      <strong>Nejlépe hodnocený film:</strong>
+    </div>
+
+    <div style="margin-left: 10px;">
+     <% sql = "SELECT
+                  d.*,
+                  (
+                    SELECT t.name
+                    FROM (
+                      SELECT name, (SELECT AVG(value) FROM ratings WHERE movie_id = movies.id) avgval
+                      FROM movies
+                      WHERE director_id = d.id
+                      ORDER BY avgval DESC
+                      LIMIT 1
+                    ) t
+                  ) movie_name
+                FROM directors d;" %>
+        <% records_array = ActiveRecord::Base.connection.exec_query(sql) %>
+        <%= records_array[0].entries[5][1] %>
+
+    </div>
+
+
+  </div>
+
+
+
   <p>
     <strong>Filmy:</strong>
   <% director.movies.each do |movie| %>

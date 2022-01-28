@@ -34,7 +34,7 @@ class DirectorsController < ApplicationController
 
     respond_to do |format|
       if @director.save
-        format.html { redirect_to director_url(@director), notice: "Director was successfully created." }
+        format.html { redirect_to director_url(@director), notice: "Režisér byl úspěšně přidán" }
         format.json { render :show, status: :created, location: @director }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class DirectorsController < ApplicationController
     @director.destroy
 
     respond_to do |format|
-      format.html { redirect_to directors_url, notice: "Director was successfully destroyed." }
+      format.html { redirect_to directors_url, notice: "Režisér byl úspěšně odstraněn." }
       format.json { head :no_content }
     end
   end

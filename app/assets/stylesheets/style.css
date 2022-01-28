@@ -1,0 +1,26 @@
+.flexbox-container {
+
+	display: flex;
+	margin-bottom: 10px;
+
+
+}
+
+.flexbox-item {
+
+	margin: 5px;
+
+
+}
+
+.flexbox-item-4 {
+
+	align-content: flex-end;
+	font-size: 20px;
+	
+
+}
+
+.btn {
+	font-size: 20px;
+}

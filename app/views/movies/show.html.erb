@@ -1,9 +1,31 @@
 
 <%= render @movie %>
 
-<div>
-  <%= link_to "Upravit tento film", edit_movie_path(@movie), class:"btn btn-outline-dark" %> 
-  <%= link_to "Zpět na Filmy", movies_path, class:"btn btn-outline-dark" %>
-  
-  <%= button_to "Odstranit tento film", @movie, method: :delete, class:"btn btn-danger" %>
+<div class="flexbox-container">
+  <div class="flexbox-item flexbox-item-1">
+    <%= link_to "Upravit tento film", edit_movie_path(@movie), class:"btn btn-outline-dark" %>
+  </div>
+
+  <div class="flexbox-item flexbox-item-2">
+    <%= link_to "Zpět na Filmy", movies_path, class:"btn btn-outline-dark" %>
+  </div>
+
+  <div class="flexbox-item flexbox-item-3">
+    <%= button_to "Odstranit tento film", @movie, method: :delete, class:"btn btn-danger" %>
+  </div>
+  <div class="btn-group me-2 flexbox-item-4">
+     
+      <%= button_to "*",{:controller => "ratings", :action => "create", :movie_id => @movie.id, :value => 1} , :method=>:post, class:"btn btn-outline-warning"  %>
+
+      <%= button_to "*",{:controller => "ratings", :action => "create", :movie_id => @movie.id, :value => 2} , :method=>:post, class:"btn btn-outline-warning" %>
+
+      <%= button_to "*",{:controller => "ratings", :action => "create", :movie_id => @movie.id, :value => 3} , :method=>:post, class:"btn btn-outline-warning" %>
+
+      <%= button_to "*",{:controller => "ratings", :action => "create", :movie_id => @movie.id, :value => 4} , :method=>:post, class:"btn btn-outline-warning" %>
+
+      <%= button_to "*",{:controller => "ratings", :action => "create", :movie_id => @movie.id, :value => 5} , :method=>:post, class:"btn btn-outline-warning" %>
+
+  </div>
 </div>
+
+
