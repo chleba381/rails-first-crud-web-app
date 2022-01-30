@@ -36,7 +36,7 @@
 
       <% if movie.ratings.where(created_at: 10.hours.ago..).count > 0 %>
         <div style="margin-left: 40px;">
-          <strong>Průměr hodnocení za posledních 10 hodin:</strong>
+          <strong>Průměr nových hodnocení:</strong>
         </div>
 
         <div style="margin-left: 10px;">
@@ -44,7 +44,7 @@
         </div>
 
         <div style="margin-left: 40px;">
-          <strong>Počet hodnocení za posledních 10 hodin:</strong>
+          <strong>Počet nových hodnocení:</strong>
         </div>
 
         <div style="margin-left: 10px;">
@@ -52,7 +52,7 @@
         </div>
       <% else %>
         <div style="margin-left: 40px;">
-          Žádná hodnocení za posledních 10 hodin nejsou k dispoźici.
+          Žádná nová hodnocení nejsou k dispozici.
         </div>
       <% end %>
 
@@ -63,16 +63,14 @@
     <% end %>
       
     </div>
-  <p>
-    <strong>Popis:</strong>
-    <%= movie.description %>
-  </p>
+  <% unless current_page?('/movies') %>
+    <p>
+      <strong>Popis:</strong>
+      <%= movie.description %>
+    </p>
+  <% end %>
 
-  <p>
-      <%= link_to "Ukázat tento film", movie, class:"btn btn-outline-dark" %>
-  </p>
-
-
+  
 
 
 </div>

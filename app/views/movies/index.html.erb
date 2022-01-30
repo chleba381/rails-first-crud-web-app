@@ -1,16 +1,16 @@
-<h1>Filmy</h1>
+<h1 class="nadpis1">Filmy</h1>
 <% if user_signed_in? %>
   <%= link_to "Přidat nový film", new_movie_path, class:"btn btn-outline-dark" %>
-  <br/>
 <% else %>
   <p>Přidávat nové filmy mohou pouze registrovaní uživatelé, pokud chcete přidat film do databáze, musíte se <%= link_to "přihlásit", new_user_session_path %>.</p>
   <p>Nemáte ješte založený účet? <%= link_to "Vytvořte si ho", new_user_registration_path %>!</p>
-<% end %>
-<br/>
-<div id="movies">
+<% end %> 
+<div id="movies" style="margin-top: 20px;">
   <% @movies.each do |movie| %>
     <%= render movie %>
-    
+    <div class="redirect-button">
+      <%= link_to "Ukázat tento film", movie, class:"btn btn-outline-dark" %>
+    </div>
   <% end %>
 </div>
 

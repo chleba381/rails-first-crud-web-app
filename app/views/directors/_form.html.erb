@@ -21,8 +21,8 @@
     <%= form.label :date_of_birth, "Datum narození", style: "display: block" %>
     <%= form.date_select :date_of_birth, { :include_blank => true, :start_year => 1900 }, { :class => "col-md-3" } %> 
   </div>
-<br/>
-  <div>
+
+  <div style="margin-top: 20px;">
     <%= form.submit "Přidat režiséra", class:"btn btn-outline-success" %>
   </div>
 <% end %>

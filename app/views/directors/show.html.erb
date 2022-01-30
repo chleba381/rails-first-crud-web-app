@@ -1,10 +1,16 @@
-
-
 <%= render @director %>
 
-<div>
-  <%= link_to "Upravit tohoto režiséra", edit_director_path(@director), class:"btn btn-outline-dark" %> 
-  <%= link_to "Zpět na režiséry", directors_path , class:"btn btn-outline-dark" %>
+<div class="flexbox-container">
+  <div class="flexbox-item">
+    <%= link_to "Upravit tohoto režiséra", edit_director_path(@director), class:"btn btn-outline-dark" %>
+  </div>
+  
+  <div class="flexbox-item">
+    <%= link_to "Zpět na režiséry", directors_path , class:"btn btn-outline-dark" %>
+  </div>
 
-  <%= button_to "Odstranit tohoto režiséra", @director, method: :delete, class:"btn btn-danger" %>
-</div>
+  <div class="flexbox-item">
+    <%= button_to "Odstranit tohoto režiséra", @director, method: :delete, class:"btn btn-danger" %>
+  </div>
+
+</div> 

@@ -4,37 +4,52 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field form-group">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>
+      Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+    </div>
   <% end %>
 <br/>
   <div class="field form-group">
-    <%= f.label "Nové Heslo" %> <i>(nechte prázdné, pokud si ho nechcete změnit)</i><br />
+    <%= f.label "Nové Heslo" %> 
+    <i>
+      (nechte prázdné, pokud si ho nechcete změnit)
+    </i>
     <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
 
   </div>
-<br/>
-  <div class="field form-group">
-    <%= f.label "Potvrdit nové heslo" %> (minimum je <%= @minimum_password_length %> symbolů)</em><br />
+
+  <div class="field form-group" style="margin-top: 20px;">
+    <%= f.label "Potvrdit nové heslo" %> 
+    <em>
+      (minimum je <%= @minimum_password_length %> symbolů)
+    </em>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
   </div>
-<br/>
-  <div class="field form-group">
-    <%= f.label "Aktuální heslo" %> <i>(potřebujeme vaše aktuální heslo, abychom mohli potvrdit změny)</i><br />
+
+  <div class="field form-group" style="margin-top: 20px;">
+    <%= f.label "Aktuální heslo" %> 
+    <i>
+      (potřebujeme vaše aktuální heslo, abychom mohli potvrdit změny)
+    </i>
     <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
   </div>
-<br/>
-  <div class="actions">
+
+  <div class="actions" style="margin-top: 20px;">
     <%= f.submit "Potvrdit", class:"btn btn-outline-dark" %>
   </div>
 <% end %>
-<br/>
-<h3>Odstranit účet</h3>
 
-<p>Chcete odstranit svůj účet? <%= button_to "Odstranit účet", registration_path(resource_name), data: { confirm: "Jste si jistí?" }, method: :delete, class:"btn btn-outline-danger" %></p>
+<h3 style="margin-top: 20px;">Odstranit účet</h3>
 
-<%= link_to "<< Zpět", :back, class:"btn btn-outline-dark" %><br/>
+<p>
+  Chcete odstranit svůj účet? <%= button_to "Odstranit účet", registration_path(resource_name), data: { confirm: "Jste si jistí?" }, method: :delete, class:"btn btn-outline-danger" %>
+</p>
+
+<div>
+  <%= link_to "<< Zpět", :back, class:"btn btn-outline-dark" %>
+</div>

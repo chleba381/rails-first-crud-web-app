@@ -30,8 +30,8 @@
     <%= form.label :director_id, "Režisér", style: "display: block" %>
     <%= form.collection_select(:director_id, Director.all, :id, :first_name, {:prompt => 'Vyberte režiséra'}) %>
   </div>
-<br/>
-  <div>
+
+  <div style="margin-top: 20px;">
     <%= form.submit "Přidat film", class:"btn btn-outline-success" %>
   </div>
     <p class="fs-4">

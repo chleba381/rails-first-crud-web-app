@@ -1,4 +1,4 @@
-<h1>Režiséři</h1>
+<h1 class="nadpis1" style="margin-top: 10px;">Režiséři</h1>
 <% if user_signed_in? %>
   <%= link_to "Přidat nového režiséra", new_director_path, class:"btn btn-outline-dark" %>
 
@@ -10,9 +10,9 @@
 <div id="directors" style="margin-top: 40px;">
   <% @directors.each do |director| %>
     <%= render director %>
-    <p>
+    <div class="redirect-button">
       <%= link_to "Ukázat tohoto režiséra", director, class:"btn btn-outline-dark" %>
-    </p>
+    </div>
   <% end %>
 </div>
 

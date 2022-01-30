@@ -6,9 +6,7 @@ class RatingsController < ApplicationController
 		@rating = Rating.new
 	end
 
-	def ratings_latest_10
-    	ratings.where('created_at >= ?', 10.hours.ago).count
-  	end
+	
 
 	def create
 		@rating = Rating.new(rating_params)
