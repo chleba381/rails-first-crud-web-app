@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :directors
   resources :movies do 
-    resources :ratings
+  resources :ratings
   end
 
   get '/directors/:name', to: 'directors#show', as: 'direector'

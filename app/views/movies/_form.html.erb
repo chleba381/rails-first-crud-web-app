@@ -31,10 +31,12 @@
     <%= form.collection_select(:director_id, Director.all, :id, :first_name, {:prompt => 'Vyberte režiséra'}) %>
   </div>
 
+  <p class="fs-4">
+      Není režisér k vámi přidávanému filmu na výběr? <%= link_to "Přidejte ho!", new_director_path %>
+  </p>
+
   <div style="margin-top: 20px;">
     <%= form.submit "Přidat film", class:"btn btn-outline-success" %>
   </div>
-    <p class="fs-4">
-      Není režisér k vámi přidávanému filmu na výběr? <%= link_to "Přidejte ho!", new_director_path %>
-    </p>
+    
 <% end %>

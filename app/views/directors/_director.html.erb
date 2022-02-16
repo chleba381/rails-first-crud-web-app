@@ -17,84 +17,49 @@
     </div>
 
     <div style="margin-left: 10px;">
-      <% counter = 0 %>
-      <% avg_val = 0 %>
-      <% director.movies.each do |movie| %>
-        <% if movie.ratings.count > 0 %>
-          <% director.movies.each do |movie| %>
-            <% counter += 1 %>
-            <% rat_val = movie.ratings.average(:value).round(2) %>
-            <% avg_val += rat_val %>
-          <% end %>
-          <%= result = (avg_val / counter).round(2) %>/5.0
-          <% break if result > 0 %>
-        <% else %>
-          Žádný z filmů tohoto režiséra není ohodnocen
-        <% end %>
-      <% end -%>           
+      <% if (avg = director.average_rating) %>
+        <%= avg.round(2) %>/5.0
+      <% else %>
+        Žádný z filmů tohoto režiséra není ohodnocen
+      <% end %>     
     </div>
 
-    <div style="margin-left: 40px;">
-      <strong>Nejlépe hodnocený film:</strong>
-    </div>
+    
 
-    <div style="margin-left: 10px;">
-      <% ratings_all = [] %>
-      <% ratings_array = [] %>
-      <% rating_avg = [] %>
-      <% movies_rating = [] %>
-      <% best_rating = 0 %>
-      <% director.movies.each do |movie| %>
+    
+      <% if (hrm = director.highest_rated_movie) %>
+      <div style="margin-left: 40px;">
+        <strong>Nejlépe hodnocený film:</strong>
+      </div>
+      <div style="margin-left: 10px;">
+        <%= link_to hrm.name, movie_path(hrm) %>
+        (<%= hrm.average_rating.round(2) %>/5.0)
+      </div>
+      <% else %>
 
-        <% if movie.ratings.count > 0 %>
-
-          <% director.movies.each do |movie| %>
-
-            <% ratings_all = movie.ratings.to_a %>
-            <% ratings_array = ratings_all.map { |v| v[:value] } %>
-            <% ratings_avg = (ratings_array.sum.to_f / ratings_array.count).round(2).to_f %>
-            <% movies_rating << ratings_avg %>
-            <% best_rating = movies_rating.max %>
-          <% end %>
-            <% if movie.ratings.average(:value).round(2) == best_rating %>
-             <%= link_to movie.name, movie_path(movie) %>
-             (<%= best_rating %>/5.0)
-           <% end %>
-        <% end %>
       <% end %>
-    </div>
+    
 
 
   </div>
   <div class="flexbox-container" style="margin-top: -10px;">
-    <div style="margin-left: 360px;">
-      <strong>
-        Nejhůř hodnocený film:
-      </strong>
-    </div>
+    
 
-    <div style="margin-left: 10px;">
-      <% ratings_all = [] %>
-      <% ratings_array = [] %>
-      <% rating_avg = [] %>
-      <% movies_rating = [] %>
-      <% worst_rating = 0 %>
-      <% director.movies.each do |movie| %>
-        <% if movie.ratings.count > 0 %>
-          <% director.movies.each do |movie| %>
-            <% ratings_all = movie.ratings.to_a %>
-            <% ratings_array = ratings_all.map { |v| v[:value] } %>
-            <% ratings_avg = (ratings_array.sum.to_f / ratings_array.count).round(2).to_f %>
-            <% movies_rating << ratings_avg %>
-            <% worst_rating = movies_rating.min %>
-          <% end %>
-            <% if movie.ratings.average(:value).round(2) == worst_rating %>
-             <%= link_to movie.name, movie_path(movie) %>
-             (<%= worst_rating %>/5.0)
-           <% end %>
-        <% end %>
+    
+      <% if (lrm = director.lowest_rated_movie) %>
+      <div style="margin-left: 360px;">
+       <strong>
+          Nejhůř hodnocený film:
+        </strong>
+      </div>
+      <div style="margin-left: 10px;">
+        <%= link_to lrm.name, movie_path(lrm) %>
+        (<%= lrm.average_rating.round(2) %>/5.0)
+      </div>
+      <% else %>
+
       <% end %>
-    </div>
+    
   </div>
 
 
